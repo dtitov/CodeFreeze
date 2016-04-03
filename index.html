@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>Codefreeze by dtitov</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Codefreeze</h1>
+        <h2>Deep immutability Java library</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/dtitov/CodeFreeze/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/dtitov/CodeFreeze/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/dtitov/CodeFreeze" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a id="codefreeze" class="anchor" href="#codefreeze" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CodeFreeze</h1>
+
+<p>Deep immutability Java library</p>
+
+<p><a href="https://drone.io/github.com/dtitov/CodeFreeze/latest"><img src="https://drone.io/github.com/dtitov/CodeFreeze/status.png" alt="Build Status"></a></p>
+
+<h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features</h2>
+
+<p>CodeFreeze library allows you to create immutable versions of POJO beans. The trick is that such immutability is deep:
+you will be not allowed not only to change first-level properties of the bean, but any properties on any level of nesting.</p>
+
+<p>Example:</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">CodeFreeze</span> codeFreeze <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">CGLIBCodeFreeze</span>();
+<span class="pl-smi">User</span> user <span class="pl-k">=</span> userRepository<span class="pl-k">.</span>getUserById(<span class="pl-c1">1</span>); <span class="pl-c">// obtaining some User bean</span>
+<span class="pl-smi">User</span> immutableUser <span class="pl-k">=</span> codeFreeze<span class="pl-k">.</span>freeze(user); <span class="pl-c">// creating deep immutable version of User instance</span>
+immutableUser<span class="pl-k">.</span>setName(<span class="pl-s"><span class="pl-pds">"</span>John Smith<span class="pl-pds">"</span></span>); <span class="pl-c">// this is gonna throw an UnsupportedOperationException</span>
+immutableUser<span class="pl-k">.</span>getAddress()<span class="pl-k">.</span>setStreet(<span class="pl-s"><span class="pl-pds">"</span>Broadway<span class="pl-pds">"</span></span>); <span class="pl-c">// this ALSO is gonna throw an UnsupportedOperationException</span></pre></div>
+
+<p>Such behavior can be really useful for security and code-protection purposes in various kinds of cases (e.g. caching).</p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Add the repo to your pom.xml:</p>
+
+<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">repositories</span>&gt;
+    &lt;<span class="pl-ent">repository</span>&gt;
+        &lt;<span class="pl-ent">id</span>&gt;bracer-mvn-repo&lt;/<span class="pl-ent">id</span>&gt;
+        &lt;<span class="pl-ent">url</span>&gt;https://raw.github.com/dtitov/CodeFreeze/mvn-repo/&lt;/<span class="pl-ent">url</span>&gt;
+        &lt;<span class="pl-ent">snapshots</span>&gt;
+            &lt;<span class="pl-ent">enabled</span>&gt;true&lt;/<span class="pl-ent">enabled</span>&gt;
+            &lt;<span class="pl-ent">updatePolicy</span>&gt;always&lt;/<span class="pl-ent">updatePolicy</span>&gt;
+        &lt;/<span class="pl-ent">snapshots</span>&gt;
+    &lt;/<span class="pl-ent">repository</span>&gt;
+&lt;/<span class="pl-ent">repositories</span>&gt;</pre></div>
+
+<p>Then add the dependency:</p>
+
+<div class="highlight highlight-text-xml"><pre>        &lt;<span class="pl-ent">dependency</span>&gt;
+            &lt;<span class="pl-ent">groupId</span>&gt;com.autsia&lt;/<span class="pl-ent">groupId</span>&gt;
+            &lt;<span class="pl-ent">artifactId</span>&gt;codefreeze&lt;/<span class="pl-ent">artifactId</span>&gt;
+            &lt;<span class="pl-ent">version</span>&gt;~&lt;/<span class="pl-ent">version</span>&gt;
+        &lt;/<span class="pl-ent">dependency</span>&gt;</pre></div>
+
+<hr>
+
+<p><em>Except as otherwise noted, this library is licensed under the Apache License, Version 2.0 (<a href="http://www.apache.org/licenses/LICENSE-2.0.html">http://www.apache.org/licenses/LICENSE-2.0.html</a>)</em></p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
