@@ -43,6 +43,8 @@ public class ExceptionMethodInterceptor implements MethodInterceptor {
 
     /**
      * {@inheritDoc}
+     *
+     * @throws UnsupportedOperationException
      */
     @Override
     public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {

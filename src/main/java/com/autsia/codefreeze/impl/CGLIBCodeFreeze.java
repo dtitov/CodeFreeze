@@ -116,10 +116,10 @@ public class CGLIBCodeFreeze implements CodeFreeze {
         Factory factory = getFactory(bean.getClass());
         Callback[] callbacks = getCallbacks(bean);
         T newInstance = (T) factory.newInstance(callbacks);
-        ExceptionMethodInterceptor unsupportedOperationExceptionCallback = (ExceptionMethodInterceptor) callbacks[1];
+        ExceptionMethodInterceptor exceptionCallback = (ExceptionMethodInterceptor) callbacks[1];
         // By default the ExceptionMethodInterceptor is not active to allow calling setters in class constructor
         // After class instance creation it should be immediately activated
-        unsupportedOperationExceptionCallback.setActive(true);
+        exceptionCallback.setActive(true);
         return newInstance;
     }
 
