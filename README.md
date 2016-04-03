@@ -39,7 +39,7 @@ Then add the dependency:
         <dependency>
             <groupId>com.autsia</groupId>
             <artifactId>codefreeze</artifactId>
-            <version>~</version>
+            <version>^</version>
         </dependency>
 ```
 ---
