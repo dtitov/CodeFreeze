@@ -330,6 +330,32 @@ public class CodeFreezeTest {
         iterator.remove();
     }
 
+    // Test input collections/maps
+
+    @Test(expectedExceptions = UnsupportedOperationException.class)
+    public void testInputList() throws Exception {
+        Collection<BigInteger> list = new ArrayList<>();
+        list.add(BigInteger.ZERO);
+        Collection<BigInteger> frozenList = codeFreeze.freeze(list);
+        frozenList.add(BigInteger.ONE);
+    }
+
+    @Test(expectedExceptions = UnsupportedOperationException.class)
+    public void testInputSet() throws Exception {
+        Collection<BigInteger> set = new HashSet<>();
+        set.add(BigInteger.ZERO);
+        Collection<BigInteger> frozenSet = codeFreeze.freeze(set);
+        frozenSet.add(BigInteger.ONE);
+    }
+
+    @Test(expectedExceptions = UnsupportedOperationException.class)
+    public void testInputMap() throws Exception {
+        Map<BigInteger, String> map = new HashMap<>();
+        map.put(BigInteger.ZERO, BigInteger.ZERO.toString());
+        Map<BigInteger, String> frozenMap = codeFreeze.freeze(map);
+        frozenMap.put(BigInteger.ONE, BigInteger.ONE.toString());
+    }
+
     // Other tests
 
     @Test
