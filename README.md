@@ -1,8 +1,6 @@
 # CodeFreeze
 Deep immutability Java library
 
-[![Build Status](https://drone.io/github.com/dtitov/CodeFreeze/status.png)](https://drone.io/github.com/dtitov/CodeFreeze/latest)
-
 ## Features
 CodeFreeze library allows you to create immutable versions of POJO beans. The trick is that such immutability is deep:
 you will be not allowed not only to change first-level properties of the bean, but any properties on any level of nesting.
